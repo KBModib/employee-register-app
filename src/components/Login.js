@@ -1,8 +1,7 @@
-import React from 'react'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import useState from 'react-dom'
-
+import React from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { getState } from 'react';
 
 export default function Login () {
 
@@ -18,7 +17,6 @@ export default function Login () {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
         </Form.Group>
-        <h4>Not registered? Complete your registration<a>here</a>.</h4>
         <Button className="btn" type="submit">
             Submit
         </Button>

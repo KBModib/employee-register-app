@@ -5,7 +5,8 @@ import './App.css';
 function App() {
   return (
     <>
-    <TabOpt/>
+       <h1 className="heading">Employee ID Log</h1>
+        <TabOpt/>
     </>
   );
 }

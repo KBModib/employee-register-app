@@ -14,7 +14,7 @@ export default function TabOpt () {
   className="mb-3 tab-box"
 >
   <Tab eventKey="registration" title="Register" className="tab-key">
-    <Registration/>
+   <Registration/>
   </Tab>
   <Tab eventKey="login" title="Login" className="tab-key">
     <Login/>

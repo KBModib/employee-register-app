@@ -4,26 +4,42 @@
   overflow: clip;
 }
 body {
-  background-color: rgb(36, 218, 231);
+  background-color: rgb(174, 232, 236);
+  overflow: hidden;
+}
+.heading {
+  margin-left: 650px;
+  margin-top: 50px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 35pt;
+  -webkit-text-fill-color: rgb(6, 80, 39);
 }
 .form {
-  border: 1px solid red;
-  background-color: bisque;
+  background-color: rgb(6, 80, 39);
   width: 95%;
   margin: auto;
+  font-family: 'Times New Roman', Times, serif;
+  -webkit-text-fill-color: darkgoldenrod;
 }
 .btn{
   background-color: darkgoldenrod;
+  border-color: darkgoldenrod;
+  margin-left: 300px;
+  margin-bottom: 10px;
+  -webkit-text-fill-color: rgb(6, 80, 39);
+  box-shadow: 10px 5px 5px black;
 }
 .tab-container {
   box-sizing: content-box;
   width: 700px;
-  margin: 60px;
-  border: 2px solid pink;
-  background-color: teal;
+  margin-top: 20px;
+  margin-left: 500px;
+  border: solid transparent;
+  background-color: rgb(6, 80, 39);
   border-radius: 20px;
-  -webkit-text-fill-color: rgb(189, 243, 81);
+  font-family: 'Times New Roman', Times, serif;
+  -webkit-text-fill-color: darkgoldenrod;
 }
 .tab-key {
-  background-color: yellow;
+  background-color: rgb(6, 80, 39);
 }
