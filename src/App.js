@@ -1,16 +1,11 @@
 import React from 'react';
-import Registration from './components/Registration';
-//import Login from './components/Login';
-//import Landing from './Landing.js';
-//import Header from './components/Header';
+import TabOpt from './components/TabOpt';
 import './App.css';
 
 function App() {
   return (
     <>
-    <Registration/>
-   
-  
+    <TabOpt/>
     </>
   );
 }

@@ -1,15 +1,29 @@
 * {
   margin: 0;
   padding: 0;
+  overflow: clip;
 }
 body {
   background-color: rgb(36, 218, 231);
 }
 .form {
   border: 1px solid red;
-  width: 60%;
-  margin: 30% auto;
+  background-color: bisque;
+  width: 95%;
+  margin: auto;
 }
 .btn{
   background-color: darkgoldenrod;
+}
+.tab-container {
+  box-sizing: content-box;
+  width: 700px;
+  margin: 60px;
+  border: 2px solid pink;
+  background-color: teal;
+  border-radius: 20px;
+  -webkit-text-fill-color: rgb(189, 243, 81);
+}
+.tab-key {
+  background-color: yellow;
 }
