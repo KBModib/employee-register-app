@@ -1,29 +1,111 @@
-import React from 'react'
+import React, { setState }  from 'react'
 import Form from 'react-bootstrap/Form'
 import { Button } from 'react-bootstrap'
 
+
 export default function Registration() {
+   userData;
+    constructor(props) {
+        super(props);
+      this.onChangeFirstName = this.onChangeFirstName.bind(this);
+      this.onChangeLastName = this.onChangeLastName.bind(this);
+      this.onChangeEmail = this.onChangeEmail.bind(this);
+      this.onChangeEmployeeID = this.onChangeEmployeeID.bind(this);
+      this.onChangePassword = this.onChangePassword.bind(this);
+      this.onChangeImage = this.onChangeImage.bind(this);
+      this.onSubmit = this.onSubmit.bind(this);
+      this.state = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        employeeID: '',
+        password: '',
+        image: ''
+      }
+    }
+  onChangeFirstName(e) {
+    this.setState({firstName: e.target.value})
+  }
+  onChangeLastName(e) {
+    this.setState({lasttName: e.target.value})
+  }
+  onChangeEmail(e) {
+    this.setState({email: e.target.value})
+  }
+  onChangeEmployeeID(e) {
+    this.setState({employeeID: e.target.value})
+  }
+  onChangePassword (e) {
+    this.setState({password: e.target.value})
+  }
+  onChangeImage (e) {
+    this.setState({image: e.target.value})
+  }
+  onSubmit(e) {
+        e.preventDefault()
+        this.setState({
+          firstName: '',
+          lastName: '',
+          email: '',
+          employeeID: '',
+          password: '',
+          image: ''
+        })
+    }
+  componentDidMount() {
+        this.userData = JSON.parse(localStorage.getItem('user'));
+        if (localStorage.getItem('user')) {
+            this.setState({
+             firstName: this.userData.firstName,
+             lastName: this.userData.lastName,
+             email: this.userData.email,
+             employeeID: this.userData.employeeID,
+             password: this.userData.password,
+             image: this.userData.image
+            })
+        } else {
+          this.setState({
+          firstName: '',
+          lastName: '',
+          email: '',
+          employeeID: '',
+          password: '',
+          image: ''
+        })
+    }
+
+   componentWillUpdate(nextProps, nextState) {
+        localStorage.setItem('user', JSON.stringify(nextState));
+    }
+    
+     onSubmit(e) {
+        e.preventDefault()
+        console.log(this.state.props)
+    }
+    
+  render () {
+    
   return (
  <Form className='form'>
     <Form.Group className="mb-3" controlId="firstName">
         <Form.Label>First Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter First Name" />
+        <Form.Control type="text" placeholder="Enter First Name" value={this.state.firstName} onChange={this.onChangeFirstName}/>
     </Form.Group>
     <Form.Group className="mb-3" controlId="lastname">
         <Form.Label>Surname</Form.Label>
-        <Form.Control type="text" placeholder="Enter Surname" />
+        <Form.Control type="text" placeholder="Enter Surname" value={this.state.lastName} onChange={this.onChangeLastName}/>
     </Form.Group>
     <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control type="email" placeholder="Enter email" value={this.state.email} onChange={this.onChangeEmail}/>
     </Form.Group>
     <Form.Group className="mb-3" controlId="employeeID">
         <Form.Label>Employee ID</Form.Label>
-        <Form.Control type="alphanumeric" placeholder="Enter Employee ID Number"/>
+        <Form.Control type="alphanumeric" placeholder="Enter Employee ID Number" value={this.state.employeeID} onChange={this.onChangeEmployeeID}/>
     </Form.Group>
     <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control type="password" placeholder="Password" value={this.state.paswword} onChange={this.onChangePassword}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword" >
         <Form.Label>Confirm Password</Form.Label>
@@ -31,7 +113,7 @@ export default function Registration() {
       </Form.Group>
     <Form.Group className="mb-3" controlId="Image">
         <Form.Label>Profile image</Form.Label>
-        <Form.Control type="file" placeholder="Add Profile Image" />
+        <Form.Control type="file" placeholder="Add Profile Image" value={this.state.image} onChange={this.onChangeImage}/>
         <Form.Text className="text-muted">
         Ensure that your image shows your face clearly. No sunglasses, side poses, accessories that obstruct the face from full view.
         </Form.Text>
@@ -42,4 +124,5 @@ export default function Registration() {
 </Form>
    
   )
+}
 }
