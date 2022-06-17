@@ -18,7 +18,6 @@ export default function Table() {
     }
   return (
     <div>
-      <h1>Employee ID Log</h1>
       
     </div>
   )
