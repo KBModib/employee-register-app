@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/esm/Button'
     const navigate = useNavigate();
   return (
     <Button variant="primary" type="submit" onClick={() => navigate("/Landing")}>
-    Register
+    Log Data
 </Button>
   )
 }

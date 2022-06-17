@@ -7,7 +7,7 @@ import Landing from './Landing';
 function App() {
   return (
     <>
-       <h1 className="heading">Employee ID Log</h1>
+      <h1 className="heading">Employee ID Log</h1>
         <Router>
           <Routes>
             <Route path="/" element={<TabOpt/>}/>

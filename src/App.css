@@ -2,10 +2,15 @@
   margin: 0;
   padding: 0;
   overflow: clip;
+ 
 }
 body {
   background-color: rgb(174, 232, 236);
   overflow: hidden;
+  width: 2500px;
+  max-width: 2600px;
+  height: 1600px;
+  max-height: max-content;
 }
 .heading {
   margin-left: 650px;
@@ -22,13 +27,13 @@ body {
   -webkit-text-fill-color: darkgoldenrod;
 }
 .btn{
-  /*background-color: darkgoldenrod;
-  border-color: darkgoldenrod;*/
+  background-color: darkgoldenrod;
+  border-color: darkgoldenrod;
   margin-left: 300px;
   margin-bottom: 10px;
   -webkit-text-fill-color: rgb(6, 80, 39);
   box-shadow: 10px 5px 5px black;
-  width: 80px;
+  width: 100px;
   height: 40px;
 }
 .tab-container {
@@ -48,7 +53,11 @@ body {
 .time {
   font-family: 'Times New Roman', Times, serif;
   padding: 10px;
+  margin-left: -750px;
 }
-.reg-form {
-  height: 30%;
+.mb-3{
+  height: 80px;
+}
+.tab-box {
+  height: 40px; 
 }
