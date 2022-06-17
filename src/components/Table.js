@@ -13,8 +13,7 @@ export default function Table() {
       const dataRow = document.createElement('div');
 
       dataRow.classList.add('data-row')
-
-
+        
     }
   return (
     <div>
