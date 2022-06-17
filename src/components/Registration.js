@@ -1,7 +1,7 @@
-import React, { setState }  from 'react'
+import React from 'react'
 import Form from 'react-bootstrap/Form'
-import { Button } from 'react-bootstrap'
 import { Component } from 'react';
+import Button from './Button';
 
 export default class Registration extends Component {
    userData;
@@ -23,6 +23,7 @@ export default class Registration extends Component {
           image: ''
       }
     }
+
   onChangeFirstName(e) {
     this.setState({firstName: e.target.value})
   }
@@ -50,74 +51,60 @@ export default class Registration extends Component {
           employeeID: '',
           password: '',
           image: ''
-      })
+      });
     }
-  componentDidMount() {
-        this.userData = JSON.parse(localStorage.getItem('user'));
-        if (localStorage.getItem('user')) {
-            this.setState({
-             firstName: this.userData.firstName,
-             lastName: this.userData.lastName,
-             email: this.userData.email,
-             employeeID: this.userData.employeeID,
-             password: this.userData.password,
-             image: this.userData.image
-            })
-        } 
-           else {
-          this.setState({
-          firstName: '',
-          lastName: '',
-          email: '',
-          employeeID: '',
-          password: '',
-          image: ''
-        })
-        }
-       
-    }
+  
 
-    componentDidUpdate(nextProps, nextState) {
+  componentDidUpdate(nextProps, nextState) {
      localStorage.setItem('user', JSON.stringify(nextState));
   }
     
-   onSubmit(e) {
+  onSubmit(e) {
      e.preventDefault()
      console.log(this.state.props)
   }
-  
- 
-  // validatePasswords() {
- //     const password = document.getElementsByClassName("password-og").value;
-  //    const passwordConfirm = document.getElementsByClassName("password-confirm").value;
-    
- //     for(e = 0; e < password.length; e++) {
-  //      if(password[e] === passwordConfirm[e]) {
-  //        alert("Password approved");}
-   //     else {
-  //        alert("Passwords do not match");
-   //       return;
-   //     }
-  //    }
-  //  }
-      render () {
+  componentDidMount() {
+    this.userData = JSON.parse(localStorage.getItem('user'));
+    if (localStorage.getItem('user')) {
+        this.setState({
+         firstName: this.userData.firstName,
+         lastName: this.userData.lastName,
+         email: this.userData.email,
+         employeeID: this.userData.employeeID,
+         password: this.userData.password,
+         image: this.userData.image
+        })
+    } 
+       else {
+      this.setState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      employeeID: '',
+      password: '',
+      image: ''
+     })
+   }
+  }
+   
+  render () {
   return (
- <Form className='form' onSubmit={this.onSubmit}>
+ <Form className='form reg-form' onSubmit={this.onSubmit}>
     <Form.Group className="mb-3" controlId="firstName">
         <Form.Label>First Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter First Name" value={this.state.firstName} onChange={this.onChangeFirstName}/>
+        <Form.Control type="text" placeholder="Enter First Name" className='firstName' value={this.state.firstName} onChange={this.onChangeFirstName}/>
     </Form.Group>
     <Form.Group className="mb-3" controlId="lastname">
         <Form.Label>Surname</Form.Label>
-        <Form.Control type="text" placeholder="Enter Surname" value={this.state.lastName} onChange={this.onChangeLastName}/>
+        <Form.Control type="text" placeholder="Enter Surname" className='lastName' value={this.state.lastName} onChange={this.onChangeLastName}/>
     </Form.Group>
     <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" value={this.state.email} onChange={this.onChangeEmail}/>
+        <Form.Control type="email" placeholder="Enter email" className='email' value={this.state.email} onChange={this.onChangeEmail}/>
     </Form.Group>
     <Form.Group className="mb-3" controlId="employeeID">
         <Form.Label>Employee ID</Form.Label>
-        <Form.Control type="alphanumeric" placeholder="Enter Employee ID Number" value={this.state.employeeID} onChange={this.onChangeEmployeeID}/>
+        <Form.Control type="alphanumeric" placeholder="Enter Employee ID Number" className='employeeID' value={this.state.employeeID} ononChange={this.onChangeEmployeeID}/>
     </Form.Group>
     <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
@@ -129,14 +116,12 @@ export default class Registration extends Component {
       </Form.Group>
     <Form.Group className="mb-3" controlId="Image">
         <Form.Label>Profile image</Form.Label>
-        <Form.Control type="file" placeholder="Add Profile Image" value={this.state.image} onChange={this.onChangeImage}/>
+        <Form.Control type="file" placeholder="Add Profile Image" className='image' value={this.state.image} onChange={this.onChangeImage}/>
         <Form.Text className="text-muted">
         Ensure that your image shows your face clearly. No sunglasses, side poses, accessories that obstruct the face from full view.
         </Form.Text>
     </Form.Group>
-    <Button variant="primary" type="submit" >
-        Submit
-    </Button>
+    <Button/>
 </Form>
 )
   }}

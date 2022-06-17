@@ -3,9 +3,11 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import Registration from './Registration'
 import Login from './Login'
+import Clock from 'react-live-clock'
 
 export default function TabOpt () {
   return (
+    <div>
     <div className="tab-container">
     <Tabs
   defaultActiveKey="login"
@@ -20,6 +22,10 @@ export default function TabOpt () {
     <Login/>
   </Tab>
 </Tabs>
+</div>
+<footer className="time" align="center">
+ <Clock format={'dddd, MMMM DD, YYYY, h:mm:ss A'} ticking={true} />
+</footer>
 </div>
   )
 }
