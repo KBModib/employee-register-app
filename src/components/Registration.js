@@ -1,33 +1,33 @@
 import React, { setState }  from 'react'
 import Form from 'react-bootstrap/Form'
 import { Button } from 'react-bootstrap'
+import { Component } from 'react';
 
-
-export default function Registration() {
+export default class Registration extends Component {
    userData;
-    constructor(props) {
+    constructor(props){
         super(props);
-      this.onChangeFirstName = this.onChangeFirstName.bind(this);
-      this.onChangeLastName = this.onChangeLastName.bind(this);
-      this.onChangeEmail = this.onChangeEmail.bind(this);
-      this.onChangeEmployeeID = this.onChangeEmployeeID.bind(this);
-      this.onChangePassword = this.onChangePassword.bind(this);
-      this.onChangeImage = this.onChangeImage.bind(this);
-      this.onSubmit = this.onSubmit.bind(this);
-      this.state = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        employeeID: '',
-        password: '',
-        image: ''
+        this.onChangeFirstName = this.onChangeFirstName.bind(this);
+        this.onChangeLastName = this.onChangeLastName.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangeEmployeeID = this.onChangeEmployeeID.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangeImage = this.onChangeImage.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.state = {
+          firstName: '',
+          lastName: '',
+          email: '',
+          employeeID: '',
+          password: '',
+          image: ''
       }
     }
   onChangeFirstName(e) {
     this.setState({firstName: e.target.value})
   }
   onChangeLastName(e) {
-    this.setState({lasttName: e.target.value})
+    this.setState({lastName: e.target.value})
   }
   onChangeEmail(e) {
     this.setState({email: e.target.value})
@@ -50,7 +50,7 @@ export default function Registration() {
           employeeID: '',
           password: '',
           image: ''
-        })
+      })
     }
   componentDidMount() {
         this.userData = JSON.parse(localStorage.getItem('user'));
@@ -63,7 +63,8 @@ export default function Registration() {
              password: this.userData.password,
              image: this.userData.image
             })
-        } else {
+        } 
+           else {
           this.setState({
           firstName: '',
           lastName: '',
@@ -72,21 +73,36 @@ export default function Registration() {
           password: '',
           image: ''
         })
+        }
+       
     }
 
-   componentWillUpdate(nextProps, nextState) {
-        localStorage.setItem('user', JSON.stringify(nextState));
-    }
+    componentDidUpdate(nextProps, nextState) {
+     localStorage.setItem('user', JSON.stringify(nextState));
+  }
     
-     onSubmit(e) {
-        e.preventDefault()
-        console.log(this.state.props)
-    }
+   onSubmit(e) {
+     e.preventDefault()
+     console.log(this.state.props)
+  }
+  
+ 
+  // validatePasswords() {
+ //     const password = document.getElementsByClassName("password-og").value;
+  //    const passwordConfirm = document.getElementsByClassName("password-confirm").value;
     
-  render () {
-    
+ //     for(e = 0; e < password.length; e++) {
+  //      if(password[e] === passwordConfirm[e]) {
+  //        alert("Password approved");}
+   //     else {
+  //        alert("Passwords do not match");
+   //       return;
+   //     }
+  //    }
+  //  }
+      render () {
   return (
- <Form className='form'>
+ <Form className='form' onSubmit={this.onSubmit}>
     <Form.Group className="mb-3" controlId="firstName">
         <Form.Label>First Name</Form.Label>
         <Form.Control type="text" placeholder="Enter First Name" value={this.state.firstName} onChange={this.onChangeFirstName}/>
@@ -105,11 +121,11 @@ export default function Registration() {
     </Form.Group>
     <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" value={this.state.paswword} onChange={this.onChangePassword}/>
+        <Form.Control type="password" placeholder="Password" className="password-og" value={this.state.password} onChange={this.onChangePassword}/>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword" >
+      <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Confirm Password</Form.Label>
-        <Form.Control type="password" placeholder="Confirm Password" />
+        <Form.Control type="password" placeholder="Confirm Password" className="password-confirm"/>
       </Form.Group>
     <Form.Group className="mb-3" controlId="Image">
         <Form.Label>Profile image</Form.Label>
@@ -118,11 +134,9 @@ export default function Registration() {
         Ensure that your image shows your face clearly. No sunglasses, side poses, accessories that obstruct the face from full view.
         </Form.Text>
     </Form.Group>
-    <Button variant="primary" type="submit">
+    <Button variant="primary" type="submit" >
         Submit
     </Button>
 </Form>
-   
-  )
-}
-}
+)
+  }}
